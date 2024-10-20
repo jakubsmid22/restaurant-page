@@ -30,7 +30,7 @@ const EditGallery = () => {
 
   const getImages = () => {
     axios
-      .get("http://localhost:3000/api/gallery")
+      .get("https://restaurant-page-eanp.onrender.com/api/gallery")
       .then((response) => {
         setImages(response.data);
       })
@@ -45,7 +45,7 @@ const EditGallery = () => {
 
   const deleteImage = (id: string) => {
     axios
-      .delete(`http://localhost:3000/api/delete-image/${id}`)
+      .delete(`https://restaurant-page-eanp.onrender.com/api/delete-image/${id}`)
       .then(() => {
         getImages();
       })
@@ -74,7 +74,7 @@ const EditGallery = () => {
 
   const editImage = (id: string) => {
     axios
-      .put(`http://localhost:3000/api/update-image/${id}`, { type, url })
+      .put(`https://restaurant-page-eanp.onrender.com/api/update-image/${id}`, { type, url })
       .then(() => {
         getImages();
         setIsOpen(false);
@@ -86,7 +86,7 @@ const EditGallery = () => {
 
   const addImage = () => {
     axios
-      .post("http://localhost:3000/api/add-image", { type, url })
+      .post("https://restaurant-page-eanp.onrender.com/api/add-image", { type, url })
       .then(() => {
         getImages();
         setIsOpen(false);

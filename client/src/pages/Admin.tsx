@@ -7,7 +7,7 @@ const Admin = () => {
     }
 
     axios
-      .put("http://localhost:3000/api/reset")
+      .put("https://restaurant-page-eanp.onrender.com/api/reset")
       .then(() => {
         alert("All values have been reset to default");
       })

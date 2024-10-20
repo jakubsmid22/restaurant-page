@@ -10,7 +10,7 @@ const Career = () => {
 
   const getPositions = () => {
     axios
-      .get("http://localhost:3000/api/wanted-positions")
+      .get("https://restaurant-page-eanp.onrender.com/api/wanted-positions")
       .then((response) => {
         setPositions(response.data.data);
       })

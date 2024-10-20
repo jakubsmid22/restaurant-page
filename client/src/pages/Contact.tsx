@@ -15,7 +15,7 @@ const Contact = () => {
 
   const getAdress = () => {
     axios
-      .get("http://localhost:3000/api/adresses")
+      .get("https://restaurant-page-eanp.onrender.com/api/adresses")
       .then((response) => {
         setAdresses(response.data.data);
       })
@@ -26,7 +26,7 @@ const Contact = () => {
 
   const getContacts = () => {
     axios
-      .get("http://localhost:3000/api/contacts")
+      .get("https://restaurant-page-eanp.onrender.com/api/contacts")
       .then((response) => {
         setContacts(response.data.data);
       })
@@ -37,7 +37,7 @@ const Contact = () => {
 
   const getSchedules = () => {
     axios
-      .get("http://localhost:3000/api/contacts/schedules")
+      .get("https://restaurant-page-eanp.onrender.com/api/contacts/schedules")
       .then((response) => {
         setSchedules(response.data.data);
       })

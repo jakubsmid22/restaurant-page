@@ -31,7 +31,7 @@ const EditCarreerPage = () => {
   }, [pageData]);
 
   const handleSubmit = async () => {
-    axios.put("http://localhost:3000/api/update-page/career", {
+    axios.put("https://restaurant-page-eanp.onrender.com/api/update-page/career", {
       section1Title,
       section2Title,
       section3Title,

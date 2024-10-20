@@ -63,7 +63,7 @@ const EditMeals = () => {
 
   const getMenu = () => {
     axios
-      .get("http://localhost:3000/api/all-meals")
+      .get("https://restaurant-page-eanp.onrender.com/api/all-meals")
       .then((response) => {
         setMenu(response.data);
       })
@@ -82,7 +82,7 @@ const EditMeals = () => {
     }
 
     axios
-      .delete(`http://localhost:3000/api/delete-meal/${id}`)
+      .delete(`https://restaurant-page-eanp.onrender.com/api/delete-meal/${id}`)
       .then(() => {
         getMenu();
       })
@@ -93,7 +93,7 @@ const EditMeals = () => {
 
   const editMeal = (id: string) => {
     axios
-      .put(`http://localhost:3000/api/update-meal/${id}`, {
+      .put(`https://restaurant-page-eanp.onrender.com/api/update-meal/${id}`, {
         name,
         price,
         grammage: grammage || null,
@@ -112,7 +112,7 @@ const EditMeals = () => {
 
   const addMeal = () => {
     axios
-      .post("http://localhost:3000/api/add-meal", {
+      .post("https://restaurant-page-eanp.onrender.com/api/add-meal", {
         name,
         price,
         grammage: grammage || null,

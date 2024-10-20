@@ -17,7 +17,7 @@ const Gallery = () => {
 
   const getImages = () => {
     axios
-      .get("http://localhost:3000/api/gallery")
+      .get("https://restaurant-page-eanp.onrender.com/api/gallery")
       .then((response) => {
         setImages(response.data);
       })

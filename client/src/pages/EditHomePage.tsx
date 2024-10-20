@@ -37,7 +37,7 @@ const EditHomePage = () => {
   }, [pageData]);
 
   const handleSubmit = async () => {
-    axios.put("http://localhost:3000/api/update-page/home", {
+    axios.put("https://restaurant-page-eanp.onrender.com/api/update-page/home", {
       section1Title,
       section2Title,
       section3Title,

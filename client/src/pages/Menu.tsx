@@ -34,7 +34,7 @@ const Menu = () => {
 
   const getMenu = () => {
     axios
-      .get("http://localhost:3000/api/all-meals")
+      .get("https://restaurant-page-eanp.onrender.com/api/all-meals")
       .then((response) => {
         setMenu(response.data);
       })
@@ -45,7 +45,7 @@ const Menu = () => {
 
   const getDrinks = () => {
     axios
-      .get("http://localhost:3000/api/all-drinks")
+      .get("https://restaurant-page-eanp.onrender.com/api/all-drinks")
       .then((response) => {
         setDrinks(response.data);
       })

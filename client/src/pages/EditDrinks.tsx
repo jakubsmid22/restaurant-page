@@ -73,7 +73,7 @@ const EditDrinks = () => {
 
   const getDrinks = () => {
     axios
-      .get("http://localhost:3000/api/all-drinks")
+      .get("https://restaurant-page-eanp.onrender.com/api/all-drinks")
       .then((response) => {
         setDrinks(response.data);
       })
@@ -92,7 +92,7 @@ const EditDrinks = () => {
     }
 
     axios
-      .delete(`http://localhost:3000/api/delete-drink/${id}`)
+      .delete(`https://restaurant-page-eanp.onrender.com/api/delete-drink/${id}`)
       .then(() => {
         getDrinks();
       })
@@ -103,7 +103,7 @@ const EditDrinks = () => {
 
   const editDrink = (id: string) => {
     axios
-      .put(`http://localhost:3000/api/update-drink/${id}`, {
+      .put(`https://restaurant-page-eanp.onrender.com/api/update-drink/${id}`, {
         name,
         price,
         amount,
@@ -120,7 +120,7 @@ const EditDrinks = () => {
 
   const addDrink = () => {
     axios
-      .post("http://localhost:3000/api/add-drink", {
+      .post("https://restaurant-page-eanp.onrender.com/api/add-drink", {
         name,
         price,
         amount,
