@@ -14,6 +14,10 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    padding: "20px",
+    borderRadius: "10px",
+    width: "100%",
+    maxWidth: "750px",
   },
 };
 
@@ -44,8 +48,14 @@ const EditGallery = () => {
   }, []);
 
   const deleteImage = (id: string) => {
+    if (!confirm("Are you sure you want to delete this image?")) {
+      return;
+    }
+
     axios
-      .delete(`https://restaurant-page-eanp.onrender.com/api/delete-image/${id}`)
+      .delete(
+        `https://restaurant-page-eanp.onrender.com/api/delete-image/${id}`
+      )
       .then(() => {
         getImages();
       })
@@ -74,7 +84,10 @@ const EditGallery = () => {
 
   const editImage = (id: string) => {
     axios
-      .put(`https://restaurant-page-eanp.onrender.com/api/update-image/${id}`, { type, url })
+      .put(`https://restaurant-page-eanp.onrender.com/api/update-image/${id}`, {
+        type,
+        url,
+      })
       .then(() => {
         getImages();
         setIsOpen(false);
@@ -86,7 +99,10 @@ const EditGallery = () => {
 
   const addImage = () => {
     axios
-      .post("https://restaurant-page-eanp.onrender.com/api/add-image", { type, url })
+      .post("https://restaurant-page-eanp.onrender.com/api/add-image", {
+        type,
+        url,
+      })
       .then(() => {
         getImages();
         setIsOpen(false);
@@ -97,22 +113,31 @@ const EditGallery = () => {
   };
 
   return (
-    <main className="flex flex-col items-center">
-      <h1>Gallery</h1>
-      <button onClick={() => openModal(null)}>Add Image</button>
-      <div className="flex flex-wrap justify-center gap-2 w-full max-w-[1000px]">
+    <main className="flex flex-col items-center p-5 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl font-bold mb-5">Gallery</h1>
+      <button
+        onClick={() => openModal(null)}
+        className="mb-5 bg-orange-400 text-white px-4 py-2 rounded hover:bg-orange-600 transition"
+      >
+        Add Image
+      </button>
+      <div className="flex flex-wrap justify-center gap-4 w-full max-w-[1000px]">
         {images?.data.map((image) => (
           <div className="relative" key={image._id}>
-            <img className="w-96 h-96 object-cover" src={image.url} />
+            <img
+              className="w-96 h-96 object-cover rounded shadow"
+              src={image.url}
+              alt={image.type}
+            />
             <div
               onClick={() => deleteImage(image._id)}
-              className="absolute top-2 right-2 bg-white text-xl rounded-sm hover:bg-red-600 hover:text-white cursor-pointer transition-all  "
+              className="absolute top-2 right-2 bg-white text-xl rounded-sm hover:bg-red-600 hover:text-white cursor-pointer transition-all p-2"
             >
               <MdDelete />
             </div>
             <div
               onClick={() => openModal(image)}
-              className="absolute top-2 left-2 bg-white text-xl rounded-sm hover:bg-red-600 hover:text-white cursor-pointer transition-all  "
+              className="absolute top-2 left-2 bg-white text-xl rounded-sm hover:bg-orange-600 hover:text-white cursor-pointer transition-all p-2"
             >
               <CiEdit />
             </div>
@@ -121,7 +146,7 @@ const EditGallery = () => {
       </div>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setIsOpen(false)}
+        onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Edit Image"
       >
@@ -130,14 +155,22 @@ const EditGallery = () => {
             e.preventDefault();
             selectedImageId ? editImage(selectedImageId) : addImage();
           }}
+          className="flex flex-col gap-4"
         >
           <input
             type="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
+            className="border rounded p-2 w-full"
+            placeholder="Image URL"
+            required
           />
 
-          <select value={type} onChange={(e) => setType(e.target.value)}>
+          <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            className="border rounded p-2 w-full"
+          >
             {imagesTypes.map((type) => (
               <option key={type} value={type}>
                 {type}
@@ -145,7 +178,11 @@ const EditGallery = () => {
             ))}
           </select>
 
-          <input type="submit" value="SAVE" />
+          <input
+            type="submit"
+            value="SAVE"
+            className="bg-blue-500 text-white rounded p-2 hover:bg-blue-600 cursor-pointer transition"
+          />
         </form>
       </Modal>
     </main>
