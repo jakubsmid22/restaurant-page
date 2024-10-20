@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import PageData from "../types/Page";
 import getPageData from "../functions/getPageData";
 import axios from "axios";
