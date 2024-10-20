@@ -239,6 +239,14 @@ app.put("/api/reset", async (req, res) => {
   }
 });
 
+app.get("*", (req, res) => {
+  res.status(404).json({ success: false, message: "Route not found" });
+});
+
+app.use((error, req, res, next) => {
+  res.status(500).json({ success: false, message: error.message });
+});
+
 const start = async () => {
   await connect();
   app.listen(PORT, () => {
