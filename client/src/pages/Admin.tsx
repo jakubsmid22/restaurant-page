@@ -22,7 +22,7 @@ const Admin = () => {
         <h1 className="text-2xl font-bold mb-4 text-orange-400">Edit Page</h1>
         <div className="flex flex-wrap gap-4">
           <a
-            href="edit-page/home"
+            href="./edit-page/home"
             className="text-lg text-orange-500 hover:text-orange-600 underline"
           >
             Home Page
